@@ -1,3 +1,7 @@
+// John Rosewicz
+// fun.cpp
+// http://mcicpc.cs.atu.edu/archives/2014/mcpc2014/fun/fun.html
+
 #include <cstdlib>
 #include <iostream>
 #include <string>
@@ -6,15 +10,11 @@
 
 using namespace std;
 
-bool moveX = false;
-bool moveY = false;
-bool increasing = false;
-int currentX = 0;
-int currentY = 0;
+bool moveX, increasing;
+int currentX, currentY;
 
 int getWidth(string input) {
 	int i = 0;
-	int width;
 	string temp = "";
 	
 	while (input[i] != ' ') {
@@ -27,8 +27,8 @@ int getWidth(string input) {
 
 int getHeight(string input) {
 	int i = 0;
-	int width;
 	string temp = "";
+	
 	while (input[i] != ' ') {
 		++i;
 	}
@@ -54,8 +54,7 @@ vector<vector<string>> getHouses() {
 			break;
 		}
 		
-		int width;
-		int height;
+		int width, height;
 		
 		if (isdigit(line[0])) {
 			width = getWidth(line);
@@ -85,19 +84,15 @@ void setInitials(vector<string> house) {
 				
 				if (k == 0) {
 					moveX = true;
-					moveY = false;
 					increasing = true;
 				} else if (k == house.at(j).size() - 1) {
 					moveX = true;
-					moveY = false;
 					increasing = false;
 				} else if (j == 0) {
 					moveX = false;
-					moveY = true;
 					increasing = true;
 				} else {
 					moveX = false;
-					moveY = true;
 					increasing = false;
 				}
 			}
@@ -107,7 +102,6 @@ void setInitials(vector<string> house) {
 
 void handleCollision(vector<string> house) {
 	moveX = !moveX;
-	moveY = !moveY;
 	increasing = increasing ? house.at(currentY)[currentX] == '\\' : house.at(currentY)[currentX] == '/';
 }
 
