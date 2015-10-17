@@ -1,3 +1,7 @@
+// John Rosewicz
+// rot.cpp
+// http://mcicpc.cs.atu.edu/archives/2014/mcpc2014/rot/rot.html
+
 #include <cstdlib>
 #include <iostream>
 #include <fstream>
